@@ -33,6 +33,26 @@ section{padding:clamp(4.5rem,11vw,8rem) 0;position:relative}
 .animate-in {
   animation: fadeUp 0.8s ease-out forwards;
 }
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  background: var(--glass);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 10px 20px;
+  border-radius: 99px;
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-weight: 700;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.music-btn:hover {
+  transform: translateY(-3px);
+  border-color: var(--b);
+}
 
 /* glass nav */
 .nav{position:fixed;inset:14px 0 auto;z-index:50;display:flex;justify-content:center;}
@@ -127,8 +147,8 @@ footer{padding:2rem 0 3rem;text-align:center;color:var(--mute);font-size:.9rem}
     <div class="masonry animate-in">
       <article><div class="card"><img src="Poster-ad.jpg" alt="Yugo Sushi poster"><div class="cap"><b>Yugo Sushi</b><span>Commercial print</span></div></div></article>
       <article><div class="card"><img src="BlindBoxAlley.jpg" alt="Blind Box Alley"><div class="cap"><b>Blind Box Alley</b><span>Typography</span></div></div></article>
-      <article><div class="card"><img src="Bannder-ad_2.jpg" alt="Depravity Apparel"><div class="cap"><b>Depravity Apparel</b><span>Social promo</span></div></div></article>
-      <article><div class="card"><img src="2HORIZONTAL%20LOGO_2.jpg" alt="Nathan’s Night branding"><div class="cap"><b>Nathan’s Night</b><span>Brand identity</span></div></div></article>
+      <article><div class="card"><img src="Bannder-ad.jpg" alt="Depravity Apparel"><div class="cap"><b>Depravity Apparel</b><span>Social promo</span></div></div></article>
+      <article><div class="card"><img src="2HORIZONTAL LOGO.jpg" alt="Nathan’s Night branding"><div class="cap"><b>Nathan’s Night</b><span>Brand identity</span></div></div></article>
     </div>
 
     <h3 class="sub animate-in">Restless Magazine Editorial</h3>
@@ -155,6 +175,28 @@ footer{padding:2rem 0 3rem;text-align:center;color:var(--mute);font-size:.9rem}
 </section>
 </main>
 <footer>© 2026 Nathaniel Estabaya. All rights reserved.</footer>
+
+<!-- Background Music Audio Element -->
+<audio id="bgMusic" loop>
+  <!-- Replacing with a standard royalty-free lofi track, as YouTube embeds cannot serve as pure background audio sources easily -->
+  <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+</audio>
+<button id="musicToggle" class="music-btn animate-in">Play Music</button>
+
+<script>
+  const music = document.getElementById('bgMusic');
+  const toggleBtn = document.getElementById('musicToggle');
+  
+  toggleBtn.addEventListener('click', () => {
+    if (music.paused) {
+      music.play();
+      toggleBtn.innerText = 'Pause Music';
+    } else {
+      music.pause();
+      toggleBtn.innerText = 'Play Music';
+    }
+  });
+</script>
 
 </body>
 </html>
