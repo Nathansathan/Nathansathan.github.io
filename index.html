@@ -1,442 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nathaniel Estabaya | Creative Portfolio</title>
-    <!-- AOS Animation Library CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        /* Modernized Color Palette & Typography */
-        :root {
-            --primary-accent: #FFDE42;
-            --bg-dark: #0a0a0a;
-            --surface-dark: #1a1a1a;
-            --surface-light: #2a2a2a;
-            --text-main: #f0f0f0;
-            --text-muted: #a0a0a0;
-            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nathan | Graphic Design Portfolio</title>
+<meta name="description" content="Posters and magazine spreads by Nathan.">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#131316;--ink:#f4f4f6;--mute:#a3a3ad;--a:#7c5cff;--b:#ff4d8d;--glass:rgba(255,255,255,.06);--line:rgba(255,255,255,.14);--r:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 'Hanken Grotesk',system-ui,sans-serif;overflow-x:hidden}
+img,video,iframe{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--b);outline-offset:3px}
+h1,h2,h3{font-family:Unbounded,'Arial Black',sans-serif;line-height:1.05;letter-spacing:-.03em;font-weight:800}
+h2{font-size:clamp(2rem,4.6vw,3.8rem)}
+.wrap{width:min(1200px,92vw);margin-inline:auto}
+section{padding:clamp(4.5rem,11vw,8rem) 0;position:relative}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+/* page-transition curtain */
+.curtain{display:none;position:fixed;inset:0;z-index:100;pointer-events:none;background:linear-gradient(120deg,var(--a),var(--b))}
+.js .curtain{display:block}
 
-        body {
-            font-family: 'Yu Gothic UI', -apple-system, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
+/* glass nav */
+.nav{position:fixed;inset:14px 0 auto;z-index:50;display:flex;justify-content:center;pointer-events:none}
+.bar{pointer-events:auto;position:relative;display:flex;align-items:center;gap:2rem;padding:.65rem .65rem .65rem 1.5rem;border:1px solid var(--line);border-radius:99px;background:rgba(24,24,28,.5);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%)}
+.logo{font:800 1.1rem Unbounded,sans-serif;letter-spacing:-.04em}
+.bar nav{display:flex;gap:1.6rem;color:var(--mute);font-weight:500;font-size:.95rem}
+.bar nav a{transition:color .25s}.bar nav a:hover{color:var(--ink)}
+.prog{position:absolute;left:1.5rem;right:1.5rem;bottom:0;height:2px;background:linear-gradient(90deg,var(--a),var(--b));transform-origin:0 50%;transform:scaleX(0)}
 
-        /* Glassmorphism Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 20px 0;
-            text-align: center;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
+/* buttons */
+.btn{display:inline-flex;align-items:center;padding:.95rem 1.7rem;border-radius:99px;font-weight:700;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:box-shadow .3s,border-color .3s;will-change:transform}
+.btn.p{background:linear-gradient(120deg,var(--a),var(--b));border-color:transparent;box-shadow:0 10px 40px -12px var(--b)}
+.btn:hover{border-color:var(--b);box-shadow:0 14px 50px -8px var(--a)}
+.btn.sm{padding:.6rem 1.2rem;font-size:.9rem}
+.cta{display:flex;flex-wrap:wrap;gap:1rem}
 
-        nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            transition: var(--transition);
-        }
+/* hero */
+#top{min-height:100svh;display:grid;align-content:center;overflow:hidden;padding:8rem 0 5rem}
+.mega{font-size:clamp(2.2rem,7vw,6.4rem);overflow-wrap:break-word}
+.line{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.line>span{display:block}
+.out{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.lead{max-width:34rem;color:var(--mute);margin:2rem 0 2.4rem}
+.orb{position:absolute;pointer-events:none}
+.orb i{display:block;border-radius:50%;animation:float 9s ease-in-out infinite alternate}
+.o1{top:6%;right:-8%}.o1 i{width:38vw;height:38vw;max-width:540px;max-height:540px;background:radial-gradient(circle,var(--a),transparent 65%);opacity:.55;filter:blur(30px)}
+.o2{bottom:-12%;left:-10%}.o2 i{width:30vw;height:30vw;max-width:440px;max-height:440px;background:radial-gradient(circle,var(--b),transparent 65%);opacity:.4;filter:blur(30px);animation-delay:-4s}
+.o3{top:24%;right:14%}.o3 i{width:120px;height:120px;border:1px solid var(--line);border-radius:32px;background:var(--glass);backdrop-filter:blur(10px);animation:float 7s ease-in-out infinite alternate,spin 16s linear infinite}
+@keyframes float{to{transform:translate(30px,-42px) scale(1.08)}}
+@keyframes spin{to{rotate:360deg}}
+@keyframes pulse{50%{opacity:.75;transform:scale(1.05)}}
+@keyframes mq{to{transform:translateX(-50%)}}
 
-        nav a:hover {
-            color: var(--primary-accent);
-        }
+/* marquee */
+.marq{overflow:hidden;border-block:1px solid var(--line);padding:1.1rem 0;transform:rotate(-1.5deg);margin:1rem 0}
+.marq div{display:flex;width:max-content;animation:mq 30s linear infinite}
+.marq span{padding-right:3rem;white-space:nowrap;font:800 clamp(1.6rem,4vw,3rem)/1 Unbounded,sans-serif;color:transparent;-webkit-text-stroke:1px var(--mute)}
 
-        /* Section Layouts */
-        section {
-            padding: 120px 5% 80px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+/* about + video */
+.about-top{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end}
+.about-top p{color:var(--mute);max-width:36rem}
+.vid{position:relative;margin-top:4rem}
+.vid::before{content:"";position:absolute;inset:8% 4%;background:linear-gradient(120deg,var(--a),var(--b));filter:blur(80px);opacity:.45;animation:pulse 5s ease-in-out infinite}
+.frame{position:relative;padding:12px;border-radius:calc(var(--r) + 12px);border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 40px 120px -30px rgba(124,92,255,.6),0 0 0 1px rgba(255,77,141,.12),inset 0 1px 0 rgba(255,255,255,.22)}
 
-        .section-header {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            text-align: center;
-            background: linear-gradient(90deg, #fff, var(--primary-accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Hero Section */
-        #home {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
-        }
-
-        #home h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-
-        #home h1 span {
-            color: var(--primary-accent);
-        }
-
-        #home p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            color: var(--text-muted);
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            transition: var(--transition);
-        }
-
-        .about-image img:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(255, 222, 66, 0.1);
-        }
-
-        /* Skills Section */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-box {
-            background: var(--surface-dark);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 40px 30px;
-            border-radius: 12px;
-            transition: var(--transition);
-        }
-
-        .skill-box:hover {
-            transform: translateY(-5px);
-            background: var(--surface-light);
-            border-color: var(--primary-accent);
-        }
-
-        .skill-box h3 {
-            color: var(--primary-accent);
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-        }
-
-        .skill-box ul {
-            list-style: none;
-        }
-
-        .skill-box li {
-            margin-bottom: 12px;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-        }
-
-        .skill-box li::before {
-            content: '▹';
-            color: var(--primary-accent);
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-
-        /* Advanced Portfolio Grid */
-        .portfolio-masonry {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .portfolio-card {
-            background: var(--surface-dark);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-            border-color: rgba(255, 222, 66, 0.3);
-        }
-
-        .card-img-wrapper {
-            width: 100%;
-            height: 280px;
-            overflow: hidden;
-        }
-
-        .portfolio-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-            transition: transform 0.6s ease;
-        }
-
-        .portfolio-card:hover img {
-            transform: scale(1.08);
-        }
-
-        .card-content {
-            padding: 25px;
-        }
-
-        .card-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .card-content p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* Footer & Contact */
-        footer {
-            text-align: center;
-            padding: 80px 20px;
-            background: var(--surface-dark);
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        footer h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--primary-accent);
-            color: var(--bg-dark);
-            padding: 15px 40px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 30px;
-            margin-top: 30px;
-            transition: var(--transition);
-        }
-
-        .btn:hover {
-            background: #fff;
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(255, 222, 66, 0.2);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            nav {
-                padding: 15px 0;
-            }
-            nav a {
-                margin: 0 10px;
-                font-size: 0.8rem;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Sticky Glass Navbar -->
-    <nav data-aos="fade-down" data-aos-duration="1000">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#portfolio">Work</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home">
-        <h1 data-aos="zoom-in" data-aos-duration="1000">Nathaniel <span>Estabaya</span></h1>
-        <p data-aos="fade-up" data-aos-delay="200">Computer Science Student & Graphic Designer. Building reliable systems and visually striking brand identities.</p>
-        <a href="#portfolio" class="btn" data-aos="fade-up" data-aos-delay="400">View My Work</a>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <h2 class="section-header" data-aos="fade-up">Who is Nathan?</h2>
-        <div class="about-grid">
-            <div class="about-text" data-aos="fade-right">
-                <p>I am a Computer Science student who balances analytical thinking with creative design. Behind my optimistic and humorous personality is a dedicated System Quality Assurance professional in training.</p>
-                <p>My philosophy is simple: choose to be happy and value freedom. I aim to build a career where logic meets creativity, leading to a "simple rich life" full of great experiences and meaningful work.</p>
-            </div>
-            <!-- Incorporating the Magazine Cover as the About Image -->
-            <div class="about-image" data-aos="fade-left">
-                <img src="1stPageMagazine.jpg" alt="Nathaniel Estabaya Magazine Feature">
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2 class="section-header" data-aos="fade-up">Technical Arsenal</h2>
-        <div class="skills-container">
-            <div class="skill-box" data-aos="fade-up" data-aos-delay="100">
-                <h3>Software Engineering</h3>
-                <ul>
-                    <li>Python & Data Structures</li>
-                    <li>Dart & Flutter</li>
-                    <li>C Programming</li>
-                    <li>x86 Assembly Language</li>
-                </ul>
-            </div>
-            <div class="skill-box" data-aos="fade-up" data-aos-delay="200">
-                <h3>Design & Media</h3>
-                <ul>
-                    <li>Print Media & Typography</li>
-                    <li>Brand Identity Creation</li>
-                    <li>Commercial Layouts</li>
-                    <li>Photo Manipulation</li>
-                </ul>
-            </div>
-            <div class="skill-box" data-aos="fade-up" data-aos-delay="300">
-                <h3>Core Methodologies</h3>
-                <ul>
-                    <li>System Quality Assurance</li>
-                    <li>Strategic Problem Solving</li>
-                    <li>Project Collaboration</li>
-                    <li>UI/UX Prototyping</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <h2 class="section-header" data-aos="fade-up">Selected Works</h2>
-        <div class="portfolio-masonry">
-            
-            <!-- Item 1: Yugo Sushi Poster -->
-            <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="100">
-                <div class="card-img-wrapper">
-                    <img src="Poster-ad.jpg" alt="Yugo Sushi Promotional Poster">
-                </div>
-                <div class="card-content">
-                    <h3>Yugo Sushi: Commercial Print</h3>
-                    <p>Dynamic product photography layout with clear ingredient callouts and price badging designed for physical storefront conversion.</p>
-                </div>
-            </div>
-
-            <!-- Item 2: Blind Box Alley -->
-            <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="200">
-                <div class="card-img-wrapper">
-                    <img src="BlindBoxAlley.jpg" alt="The Blind Box Alley Typography">
-                </div>
-                <div class="card-content">
-                    <h3>The Blind Box Alley</h3>
-                    <p>Playful typography and promotional poster design targeting the premium designer toy and daily reveal market.</p>
-                </div>
-            </div>
-
-            <!-- Item 3: Depravity Apparel Promo -->
-            <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="300">
-                <div class="card-img-wrapper">
-                    <img src="Bannder-ad_2.jpg" alt="Depravity Apparel Promo">
-                </div>
-                <div class="card-content">
-                    <h3>Depravity Streetwear Promo</h3>
-                    <p>High-contrast social media promotional layout featuring a Buy 1 Get 1 campaign for modern urban apparel.</p>
-                </div>
-            </div>
-
-            <!-- Item 4: Nathan's Night Branding -->
-            <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="100">
-                <div class="card-img-wrapper">
-                    <img src="2HORIZONTAL LOGO_2.jpg" alt="Nathan's Night Branding">
-                </div>
-                <div class="card-content">
-                    <h3>Nathan's Night Identity</h3>
-                    <p>Logo design and brand identity development capturing a signature "golden hour" aesthetic utilizing Yu Gothic UI.</p>
-                </div>
-            </div>
-
-            <!-- Item 5: Restless Magazine Editorial (Pages 2-3) -->
-            <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="200">
-                <div class="card-img-wrapper">
-                    <img src="3rdPageMagazine.jpg" alt="Restless Magazine Achievements">
-                </div>
-                <div class="card-content">
-                    <h3>Restless Magazine Editorial</h3>
-                    <p>Custom multi-page magazine spread detailing academic achievements, personal goals, and creative interests in a striking grunge aesthetic.</p>
-                </div>
-            </div>
-
-            <!-- Item 6: My Interests / Magazine Page 4 -->
-            <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="300">
-                <div class="card-img-wrapper">
-                    <img src="4thPageMagazine.jpg" alt="Restless Magazine Interests">
-                </div>
-                <div class="card-content">
-                    <h3>Editorial Layout: Interests</h3>
-                    <p>Graphic layout blending photography and digital illustration to showcase personal hobbies, strategic games, and musical influences.</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Footer / Contact -->
-    <footer id="contact">
-        <h2 data-aos="fade-up">Let's Build Something.</h2>
-        <p data-aos="fade-up" data-aos-delay="100" style="color: var(--text-muted); margin-bottom: 20px;">Available for software QA, development, and commercial graphic design.</p>
-        <p data-aos="fade-up" data-aos-delay="200" style="font-size: 1.2rem; color: #fff;">Neestabaya@ccc.edu.ph | 0927-877-3945</p>
-        <a href="mailto:Neestabaya@ccc.edu.ph" class="btn" data-aos="fade-up" data-aos-delay="300">Get In Touch</a>
-    </footer>
-
-    <!-- AOS Animation Library JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            once: true, // Only animate once when scrolling down
-            offset: 80,
-            duration: 800,
-            easing: 'ease-out-cubic'
-        });
-    </script>
-</body>
-</html>
+/* work: masonry for posters, grid for spreads. Images keep natural ratio, never cropped */
+.sub{font:700 1rem 'Hanken Grotesk',sans-serif;color:var(--mute);letter-spacing:0;margin:3.5rem 0 1.2rem}
+.masonry{columns:3 280px;column-gap:1.4rem}
+.spreads{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:1.4rem;align-items:start}
+.card{position:relative;margin:0 0 1.4rem;break-inside:avoid;overflow:hidden;padding:8px;border-radius:var(--r);border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(14px);
