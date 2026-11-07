@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nathaniel Estabaya | Software Developer & Brand Designer</title>
-<meta name="description" content="Portfolio of Nathaniel Estabaya - Software Developer & Brand Designer.">
+<title>Nathaniel Estabaya | Software Developer &amp; Brand Designer</title>
+<meta name="description" content="Portfolio of Nathaniel Estabaya - Software Developer &amp; Brand Designer.">
 <script>var R=document.documentElement;if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){R.classList.add('anim');setTimeout(function(){if(!window.__ok)R.classList.remove('anim')},3000)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,19 +13,10 @@
 :root{--bg:#131316;--ink:#f4f4f6;--mute:#a3a3ad;--a:#7c5cff;--b:#ff4d8d;--glass:rgba(255,255,255,.06);--line:rgba(255,255,255,.14);--r:22px}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-
-/* NEW BACKGROUND IMAGE WITH DARK OVERLAY */
-body {
-  background-color: var(--bg);
-  background-image: linear-gradient(rgba(19, 19, 22, 0.85), rgba(19, 19, 22, 0.95)), url('BACKGROUNPORTFOLIO.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: var(--ink);
-  font: 400 1.05rem/1.65 'Hanken Grotesk', system-ui, sans-serif;
-  overflow-x: hidden;
+body{
+  background-color:var(--bg);
+  color:var(--ink);font:400 1.05rem/1.65 'Hanken Grotesk',system-ui,sans-serif;overflow-x:hidden
 }
-
 img,iframe{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--b);outline-offset:3px}
@@ -33,6 +24,14 @@ h1,h2,h3{font-family:Unbounded,'Arial Black',sans-serif;line-height:1.05;letter-
 h2{font-size:clamp(2rem,4.6vw,3.8rem)}
 .wrap{width:min(1200px,92vw);margin-inline:auto}
 section{padding:clamp(4.5rem,11vw,8rem) 0;position:relative}
+
+/* animated background layers (fixed, behind all content) */
+.aurora{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(90px);opacity:.2;animation:drift 28s ease-in-out infinite alternate}
+.aurora i:nth-child(1){background:var(--a);top:-20vmax;left:-15vmax}
+.aurora i:nth-child(2){background:var(--b);bottom:-25vmax;right:-20vmax;animation-duration:34s;animation-delay:-12s}
+@keyframes drift{to{transform:translate(18vw,12vh) scale(1.2)}}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 
 /* scroll reveals */
 .anim .rv{opacity:0;transform:translateY(50px) scale(.97);transition:opacity .9s ease var(--d,0s),transform .9s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
@@ -64,7 +63,8 @@ section{padding:clamp(4.5rem,11vw,8rem) 0;position:relative}
 .line{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
 .line>span{display:block}
 .out{color:transparent;-webkit-text-stroke:2px var(--ink)}
-.lead{max-width:38rem;color:var(--mute);margin:1.5rem 0 2.4rem; font-size: 1.1rem;}
+.lead{max-width:38rem;color:var(--mute);margin:1.5rem 0 2.4rem;font-size:1.1rem}
+.lead.tag{color:var(--b);font-weight:700;margin-bottom:1rem}
 .orb{position:absolute;pointer-events:none;will-change:transform}
 .orb i{display:block;border-radius:50%;animation:float 9s ease-in-out infinite alternate}
 .o1{top:6%;right:-8%}.o1 i{width:38vw;height:38vw;max-width:540px;max-height:540px;background:radial-gradient(circle,var(--a),transparent 65%);opacity:.5;filter:blur(30px)}
@@ -72,7 +72,7 @@ section{padding:clamp(4.5rem,11vw,8rem) 0;position:relative}
 @keyframes float{to{transform:translate(30px,-42px) scale(1.08)}}
 
 /* marquee */
-.marq{overflow:hidden;border-block:1px solid var(--line);padding:1.1rem 0;transform:rotate(-1.5deg);margin:1rem 0; background: rgba(0,0,0,0.3); backdrop-filter: blur(5px);}
+.marq{overflow:hidden;border-block:1px solid var(--line);padding:1.1rem 0;transform:rotate(-1.5deg);margin:1rem 0;background:rgba(0,0,0,.3);backdrop-filter:blur(5px)}
 .marq div{display:flex;width:max-content;animation:mq 32s linear infinite}
 .marq span{padding-right:3rem;white-space:nowrap;font:800 clamp(1.6rem,4vw,3rem)/1 Unbounded,'Arial Black',sans-serif;color:transparent;-webkit-text-stroke:1px var(--mute)}
 @keyframes mq{to{transform:translateX(-50%)}}
@@ -82,7 +82,7 @@ section{padding:clamp(4.5rem,11vw,8rem) 0;position:relative}
 .about-top p{color:var(--mute);max-width:36rem}
 .vid{position:relative;margin-top:4rem;will-change:transform}
 .vid::before{content:"";position:absolute;inset:8% 4%;background:linear-gradient(120deg,var(--a),var(--b));filter:blur(80px);opacity:.45;animation:pulse 5s ease-in-out infinite}
-.frame{position:relative;padding:12px;border-radius:calc(var(--r) + 12px);border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 40px 120px -30px rgba(124,92,255,.6),0 0 0 1px rgba(255,77,141,.12),inset 0 1px 0 rgba(255,255,255,.22);transition:box-shadow .5s,transform .9s cubic-bezier(.2,.8,.2,1) var(--d,0s),opacity .9s ease var(--d,0s)}
+.frame{position:relative;padding:12px;border-radius:calc(var(--r) + 12px);border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 40px 120px -30px rgba(124,92,255,.6),0 0 0 1px rgba(255,77,141,.12),inset 0 1px 0 rgba(255,255,255,.22)}
 .frame:hover{box-shadow:0 40px 140px -20px rgba(255,77,141,.55),0 0 0 1px rgba(255,77,141,.3),inset 0 1px 0 rgba(255,255,255,.22)}
 .frame iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:var(--r);background:#000}
 @keyframes pulse{50%{opacity:.75;transform:scale(1.05)}}
@@ -92,7 +92,7 @@ section{padding:clamp(4.5rem,11vw,8rem) 0;position:relative}
 .masonry{columns:3 280px;column-gap:1.4rem}
 .masonry.two{columns:2 340px}
 .masonry>article{break-inside:avoid;margin:0 0 1.4rem}
-.card{position:relative;overflow:hidden;padding:8px;border-radius:var(--r);border:1px solid var(--line);background:rgba(255,255,255,0.02);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .3s ease-out,border-color .3s,box-shadow .4s}
+.card{position:relative;overflow:hidden;padding:8px;border-radius:var(--r);border:1px solid var(--line);background:rgba(255,255,255,.02);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .3s ease-out,border-color .3s,box-shadow .4s}
 .card img{width:100%;height:auto;min-height:160px;border-radius:calc(var(--r) - 8px);background:linear-gradient(145deg,#2a2a32,#1b1b20)}
 .card img.missing{color:transparent}
 .card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.2),transparent 45%)}
@@ -116,12 +116,14 @@ footer{padding:2rem 0 3rem;text-align:center;color:var(--mute);font-size:.9rem}
 #musicToggle{position:fixed;right:20px;bottom:20px;z-index:60}
 
 @media(max-width:800px){.about-top{grid-template-columns:1fr;gap:1.5rem}}
-@media(max-width:600px){.bar{gap:1.2rem;padding-right:.65rem}.bar nav{display:none}}
+@media(max-width:600px){.bar{gap:1.2rem;padding-right:.65rem}.bar nav,.o3{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div class="curtain" aria-hidden="true"></div>
+<div class="aurora" aria-hidden="true"><i></i><i></i></div>
+<canvas id="fx" aria-hidden="true"></canvas>
 
 <header class="nav">
   <div class="bar">
@@ -138,7 +140,7 @@ footer{padding:2rem 0 3rem;text-align:center;color:var(--mute);font-size:.9rem}
   <div class="orb o2" data-p="-.12"><i></i></div>
   <div class="wrap">
     <h1 class="mega"><span class="line ln"><span>Nathaniel</span></span><span class="line ln" style="--d:.12s"><span class="out">Estabaya.</span></span></h1>
-    <p class="lead rv" style="--d:.25s" style="color: var(--primary-accent); font-weight: 700;">Software Developer & Brand Designer</p>
+    <p class="lead tag rv" style="--d:.25s">Software Developer &amp; Brand Designer</p>
     <p class="lead rv" style="--d:.35s">Boosted physical customer engagement for brands by designing high-conversion commercial print media, and engineered secure digital systems to deliver reliable, user-centric experiences.</p>
     <div class="cta rv" style="--d:.5s"><a class="btn p mag" href="#work">See the work</a><a class="btn mag" href="#about">Watch the reel</a></div>
   </div>
@@ -228,6 +230,44 @@ if(!reduce){
   addEventListener('scroll',()=>{t=t||requestAnimationFrame(run)},{passive:true});
   addEventListener('resize',run);run();
 }
+
+// Flying background: glowing particles (depth + scroll parallax, pushed away by the cursor) and shooting stars
+(()=>{
+  const cv=$('#fx');if(!cv||reduce||!cv.getContext)return;
+  const cx=cv.getContext('2d'),cols=['124,92,255','255,77,141','244,244,246'];
+  let W=0,H=0,ps=[],st=[],mx=-999,my=-999;
+  const mk=init=>{const z=Math.random()*.9+.1;return{x:Math.random()*W,y:init?Math.random()*H:H+20,z,r:z*2.4+.6,vx:(Math.random()-.5)*.3*z,vy:-(.2+Math.random()*.5)*z-.05,c:cols[Math.random()*3|0],a:.25+z*.6,ph:Math.random()*6.28}};
+  const size=()=>{const D=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;cx.setTransform(D,0,0,D,0,0);ps=Array.from({length:Math.min(70,Math.round(W*H/16000))},()=>mk(1))};
+  size();
+  addEventListener('resize',()=>{if(innerWidth!==W||Math.abs(innerHeight-H)>150)size()});
+  addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY},{passive:true});
+  const loop=t=>{
+    cx.clearRect(0,0,W,H);
+    const sy=scrollY,span=H+40;
+    for(const p of ps){
+      p.x+=p.vx;p.y+=p.vy;
+      const dx=p.x-mx,dy=p.y-my,d=dx*dx+dy*dy;
+      if(d<14000){const f=(1-d/14000)*1.2*p.z/Math.sqrt(d+1);p.x+=dx*f;p.y+=dy*f}
+      if(p.y<-20||p.x<-20||p.x>W+20)Object.assign(p,mk(0));
+      const y=(((p.y-sy*p.z*.2)%span)+span)%span-20,tw=.6+.4*Math.sin(t/700+p.ph);
+      cx.fillStyle=`rgba(${p.c},${p.a*tw})`;
+      if(p.r>1.5){cx.shadowColor=`rgba(${p.c},.9)`;cx.shadowBlur=p.r*5}else cx.shadowBlur=0;
+      cx.beginPath();cx.arc(p.x,y,p.r,0,6.283);cx.fill();
+    }
+    cx.shadowBlur=0;
+    if(Math.random()<.008&&st.length<3)st.push({x:Math.random()*W*.8,y:-20,vx:7+Math.random()*4,vy:3.5+Math.random()*3});
+    st=st.filter(s=>{
+      s.x+=s.vx;s.y+=s.vy;
+      const g=cx.createLinearGradient(s.x-s.vx*14,s.y-s.vy*14,s.x,s.y);
+      g.addColorStop(0,'rgba(255,77,141,0)');g.addColorStop(1,'rgba(255,255,255,.9)');
+      cx.strokeStyle=g;cx.lineWidth=2;cx.lineCap='round';
+      cx.beginPath();cx.moveTo(s.x-s.vx*14,s.y-s.vy*14);cx.lineTo(s.x,s.y);cx.stroke();
+      return s.x<W+80&&s.y<H+80;
+    });
+    requestAnimationFrame(loop);
+  };
+  requestAnimationFrame(loop);
+})();
 
 // 3D tilt + cursor glow on cards
 $$('.card').forEach(c=>{
