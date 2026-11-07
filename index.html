@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nathan | Creative Portfolio</title>
 <meta name="description" content="Posters, branding and magazine editorial by Nathaniel Estabaya.">
-<!-- Animated hiding only switches on if the browser supports it; a failsafe turns it off if the script below never finishes, so the page can never stay blank. -->
-<script>var R=document.documentElement;if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){R.classList.add('anim');setTimeout(function(){if(!window.__ok)R.classList.remove('anim')},3000)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -17,83 +15,146 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 'Hanken Grotesk',system-ui,sans-serif;overflow-x:hidden}
 img,iframe{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-:focus-visible{outline:2px solid var(--b);outline-offset:3px}
 h1,h2,h3{font-family:Unbounded,'Arial Black',sans-serif;line-height:1.05;letter-spacing:-.03em;font-weight:800}
 h2{font-size:clamp(2rem,4.6vw,3.8rem)}
 .wrap{width:min(1200px,92vw);margin-inline:auto}
 section{padding:clamp(4.5rem,11vw,8rem) 0;position:relative}
 
-/* reveal states: only active when html.anim is set */
-.anim .rv{opacity:0;transform:translateY(50px) scale(.97);transition:opacity .9s ease var(--d,0s),transform .9s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
-.anim .rv.in{opacity:1;transform:none}
-.anim .ln>span{transform:translateY(115%);transition:transform 1.1s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
-.anim .ln.in>span{transform:none}
-
-/* page-transition curtain (parked off-screen) */
-.curtain{position:fixed;inset:0;z-index:100;pointer-events:none;transform:translateY(100%);background:linear-gradient(120deg,var(--a),var(--b))}
+/* BULLETPROOF CSS ANIMATIONS */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+.animate-in {
+  animation: fadeUp 0.8s ease-out forwards;
+}
 
 /* glass nav */
-.nav{position:fixed;inset:14px 0 auto;z-index:50;display:flex;justify-content:center;pointer-events:none}
-.bar{pointer-events:auto;position:relative;display:flex;align-items:center;gap:2rem;padding:.65rem .65rem .65rem 1.5rem;border:1px solid var(--line);border-radius:99px;background:rgba(24,24,28,.55);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);box-shadow:0 10px 30px rgba(0,0,0,.4)}
-.logo{font:800 1.1rem Unbounded,sans-serif;letter-spacing:-.04em}
+.nav{position:fixed;inset:14px 0 auto;z-index:50;display:flex;justify-content:center;}
+.bar{display:flex;align-items:center;gap:2rem;padding:.65rem .65rem .65rem 1.5rem;border:1px solid var(--line);border-radius:99px;background:rgba(24,24,28,.8);backdrop-filter:blur(18px);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.logo{font:800 1.1rem Unbounded,sans-serif;letter-spacing:-.04em;color:var(--ink);}
 .bar nav{display:flex;gap:1.6rem;color:var(--mute);font-weight:500;font-size:.95rem}
-.bar nav a{transition:color .25s}.bar nav a:hover{color:var(--ink)}
-.prog{position:absolute;left:1.5rem;right:1.5rem;bottom:0;height:2px;background:linear-gradient(90deg,var(--a),var(--b));transform-origin:0 50%;transform:scaleX(0)}
+.bar nav a{transition:color .25s}.bar nav a:hover{color:var(--b)}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;padding:.95rem 1.7rem;border-radius:99px;font-weight:700;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,border-color .3s}
-.btn.p{background:linear-gradient(120deg,var(--a),var(--b));border-color:transparent;box-shadow:0 10px 40px -12px var(--b)}
-.btn:hover{border-color:var(--b);box-shadow:0 14px 50px -8px var(--a)}
+.btn{display:inline-flex;align-items:center;padding:.95rem 1.7rem;border-radius:99px;font-weight:700;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(12px);transition:transform .3s,box-shadow .3s,border-color .3s}
+.btn.p{background:linear-gradient(120deg,var(--a),var(--b));border-color:transparent;box-shadow:0 10px 30px -10px var(--b);color:#fff;}
+.btn:hover{transform:translateY(-3px);border-color:var(--b);box-shadow:0 14px 40px -8px var(--a)}
 .btn.sm{padding:.6rem 1.2rem;font-size:.9rem}
 .cta{display:flex;flex-wrap:wrap;gap:1rem}
 
 /* hero */
 #top{min-height:100vh;display:grid;align-content:center;overflow:hidden;padding:8rem 0 5rem}
-.mega{font-size:clamp(2.2rem,7vw,6.4rem);overflow-wrap:break-word}
-.line{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
-.line>span{display:block}
+.mega{font-size:clamp(2.2rem,7vw,6.4rem);overflow-wrap:break-word;margin-bottom:15px;}
 .out{color:transparent;-webkit-text-stroke:2px var(--ink)}
 .lead{max-width:34rem;color:var(--mute);margin:2rem 0 2.4rem}
-.orb{position:absolute;pointer-events:none;will-change:transform}
-.orb i{display:block;border-radius:50%;animation:float 9s ease-in-out infinite alternate}
-.o1{top:6%;right:-8%}.o1 i{width:38vw;height:38vw;max-width:540px;max-height:540px;background:radial-gradient(circle,var(--a),transparent 65%);opacity:.5;filter:blur(30px)}
-.o2{bottom:-12%;left:-10%}.o2 i{width:30vw;height:30vw;max-width:440px;max-height:440px;background:radial-gradient(circle,var(--b),transparent 65%);opacity:.35;filter:blur(30px);animation-delay:-4s}
-.o3{top:24%;right:14%}.o3 i{width:120px;height:120px;border:1px solid var(--line);border-radius:32px;background:var(--glass);backdrop-filter:blur(10px);animation:float 7s ease-in-out infinite alternate,spin 16s linear infinite}
-@keyframes float{to{transform:translate(30px,-42px) scale(1.08)}}
-@keyframes spin{to{rotate:360deg}}
-@keyframes pulse{50%{opacity:.75;transform:scale(1.05)}}
-@keyframes mq{to{transform:translateX(-50%)}}
-
-/* marquee */
-.marq{overflow:hidden;border-block:1px solid var(--line);padding:1.1rem 0;transform:rotate(-1.5deg);margin:1rem 0}
-.marq div{display:flex;width:max-content;animation:mq 32s linear infinite}
-.marq span{padding-right:3rem;white-space:nowrap;font:800 clamp(1.6rem,4vw,3rem)/1 Unbounded,sans-serif;color:transparent;-webkit-text-stroke:1px var(--mute)}
 
 /* about + video */
 .about-top{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end}
 .about-top p{color:var(--mute);max-width:36rem}
-.vid{position:relative;margin-top:4rem;will-change:transform}
-.vid::before{content:"";position:absolute;inset:8% 4%;background:linear-gradient(120deg,var(--a),var(--b));filter:blur(80px);opacity:.45;animation:pulse 5s ease-in-out infinite}
-.frame{position:relative;padding:12px;border-radius:calc(var(--r) + 12px);border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 40px 120px -30px rgba(124,92,255,.6),0 0 0 1px rgba(255,77,141,.12),inset 0 1px 0 rgba(255,255,255,.22);transition:box-shadow .5s,transform .9s cubic-bezier(.2,.8,.2,1) var(--d,0s),opacity .9s ease var(--d,0s)}
-.frame:hover{box-shadow:0 40px 140px -20px rgba(255,77,141,.55),0 0 0 1px rgba(255,77,141,.3),inset 0 1px 0 rgba(255,255,255,.22)}
+.vid{position:relative;margin-top:4rem;animation: float 6s ease-in-out infinite;}
+.frame{position:relative;padding:12px;border-radius:calc(var(--r) + 12px);border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(20px);box-shadow:0 40px 120px -30px rgba(124,92,255,.4);transition:transform .4s}
+.frame:hover{transform:scale(1.02);}
 .frame iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:var(--r);background:#000}
 
-/* work: true masonry (CSS columns); images keep their natural ratio, never cropped */
+/* work: masonry */
 .sub{font:700 1rem 'Hanken Grotesk',sans-serif;color:var(--mute);letter-spacing:0;margin:3.5rem 0 1.2rem}
 .masonry{columns:3 280px;column-gap:1.4rem}
 .masonry.two{columns:2 340px}
 .masonry>article{break-inside:avoid;margin:0 0 1.4rem}
-.card{position:relative;overflow:hidden;padding:8px;border-radius:var(--r);border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .3s ease-out,border-color .3s,box-shadow .4s}
+.card{position:relative;overflow:hidden;padding:8px;border-radius:var(--r);border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(14px);transition:transform .3s,border-color .3s,box-shadow .3s}
 .card img{width:100%;height:auto;min-height:160px;border-radius:calc(var(--r) - 8px);background:linear-gradient(145deg,#2a2a32,#1b1b20)}
-.card img.missing{color:transparent}
-.card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.2),transparent 45%)}
-.card:hover,.card:focus-visible{border-color:rgba(255,77,141,.65);box-shadow:0 30px 80px -25px var(--a)}
-.card:hover::after{opacity:1}
-.cap{position:absolute;left:18px;right:18px;bottom:18px;z-index:2;display:flex;justify-content:space-between;gap:1rem;padding:.75rem 1rem;border-radius:14px;border:1px solid var(--line);background:rgba(19,19,22,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:.9rem;transform:translateY(130%);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s}
+.card:hover{transform:translateY(-8px);border-color:rgba(255,77,141,.65);box-shadow:0 30px 60px -20px var(--a)}
+.cap{position:absolute;left:18px;right:18px;bottom:18px;z-index:2;display:flex;justify-content:space-between;gap:1rem;padding:.75rem 1rem;border-radius:14px;border:1px solid var(--line);background:rgba(19,19,22,.85);backdrop-filter:blur(14px);font-size:.9rem;transform:translateY(130%);opacity:0;transition:transform .4s,opacity .4s}
 .cap span{color:var(--mute)}
-.card:hover .cap,.card:focus-visible .cap{transform:none;opacity:1}
-@media(hover:none){.cap{transform:none;opacity:1}}
+.card:hover .cap{transform:none;opacity:1}
 
 /* contact */
 #contact{text-align:center;overflow:hidden}
-.big{font-size
+.big{font-size:clamp(2.2rem,8vw,6.6rem);margin-bottom:2.5rem}
+#contact .cta{justify-content:center}
+.links{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 2rem;margin-top:3rem;color:var(--mute)}
+.links a{border-bottom:1px solid var(--line);transition:color .25s,border-color .25s}
+.links a:hover{color:var(--ink);border-color:var(--b)}
+footer{padding:2rem 0 3rem;text-align:center;color:var(--mute);font-size:.9rem}
+
+@media(max-width:800px){.about-top{grid-template-columns:1fr;gap:1.5rem}}
+@media(max-width:600px){.bar{gap:1.2rem;padding-right:.65rem}.bar nav{display:none}}
+</style>
+</head>
+<body>
+
+<header class="nav animate-in">
+  <div class="bar">
+    <a class="logo" href="#top">Nathan.</a>
+    <nav aria-label="Main"><a href="#about">About</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
+    <a class="btn p sm" href="#contact">Let’s talk</a>
+  </div>
+</header>
+
+<main>
+<section id="top">
+  <div class="wrap animate-in">
+    <h1 class="mega">Graphic design,<br><span class="out">set loud.</span></h1>
+    <p class="lead">Posters and magazine spreads by Nathan. Layouts built to be looked at twice.</p>
+    <div class="cta"><a class="btn p" href="#work">See the work</a><a class="btn" href="#about">Watch the reel</a></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-top animate-in">
+      <h2>Design that earns a second look.</h2>
+      <p>I design posters and magazine spreads where type, grid, and image carry the message. Watch the reel to see how a piece goes from blank page to print.</p>
+    </div>
+    <figure class="vid animate-in">
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/EAPVcUEBPrA?autoplay=0" title="Nathan self-promotional video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2 class="animate-in">Selected work</h2>
+    <h3 class="sub animate-in">Posters &amp; Branding</h3>
+    <div class="masonry animate-in">
+      <article><div class="card"><img src="Poster-ad.jpg" alt="Yugo Sushi poster"><div class="cap"><b>Yugo Sushi</b><span>Commercial print</span></div></div></article>
+      <article><div class="card"><img src="BlindBoxAlley.jpg" alt="Blind Box Alley"><div class="cap"><b>Blind Box Alley</b><span>Typography</span></div></div></article>
+      <article><div class="card"><img src="Bannder-ad_2.jpg" alt="Depravity Apparel"><div class="cap"><b>Depravity Apparel</b><span>Social promo</span></div></div></article>
+      <article><div class="card"><img src="2HORIZONTAL%20LOGO_2.jpg" alt="Nathan’s Night branding"><div class="cap"><b>Nathan’s Night</b><span>Brand identity</span></div></div></article>
+    </div>
+
+    <h3 class="sub animate-in">Restless Magazine Editorial</h3>
+    <div class="masonry two animate-in">
+      <article><div class="card"><img src="1stPageMagazine.jpg" alt="Magazine cover"><div class="cap"><b>Cover Layout</b><span>Feature story</span></div></div></article>
+      <article><div class="card"><img src="2ndPageMagazine.jpg" alt="About Me spread"><div class="cap"><b>About Me</b><span>Editorial spread</span></div></div></article>
+      <article><div class="card"><img src="3rdPageMagazine.jpg" alt="Achievements spread"><div class="cap"><b>Achievements</b><span>Editorial spread</span></div></div></article>
+      <article><div class="card"><img src="4thPageMagazine.jpg" alt="Interests spread"><div class="cap"><b>Interests</b><span>Editorial spread</span></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap animate-in">
+    <h2 class="big">Got a project in mind?</h2>
+    <div class="cta" style="justify-content:center;"><a class="btn p" href="mailto:Neestabaya@ccc.edu.ph">Say hello</a></div>
+    <div class="links">
+      <a href="mailto:Neestabaya@ccc.edu.ph">Neestabaya@ccc.edu.ph</a>
+      <a href="tel:+639278773945">0927-877-3945</a>
+      <a href="https://www.facebook.com/nathan.estabaya/" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://www.instagram.com/nathan.estababes/?hl=en" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer>© 2026 Nathaniel Estabaya. All rights reserved.</footer>
+
+</body>
+</html>
