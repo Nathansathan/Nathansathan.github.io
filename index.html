@@ -20,12 +20,19 @@ h2{font-size:clamp(2rem,4.6vw,3.8rem)}
 .wrap{width:min(1200px,92vw);margin-inline:auto}
 section{padding:clamp(4.5rem,11vw,8rem) 0;position:relative}
 
-/* Native Scroll Reveals */
-.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
-.reveal.active { opacity: 1; transform: translateY(0); }
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
+/* BULLETPROOF CSS ANIMATIONS */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+.animate-in {
+  animation: fadeUp 0.8s ease-out forwards;
+}
 
 /* glass nav */
 .nav{position:fixed;inset:14px 0 auto;z-index:50;display:flex;justify-content:center;}
@@ -54,12 +61,11 @@ section{padding:clamp(4.5rem,11vw,8rem) 0;position:relative}
 .o1 i { width: 38vw; height: 38vw; max-width: 540px; max-height: 540px; background: radial-gradient(circle, var(--a), transparent 65%); opacity: .3; filter: blur(40px); }
 .o2 { bottom: -12%; left: -10%; }
 .o2 i { width: 30vw; height: 30vw; max-width: 440px; max-height: 440px; background: radial-gradient(circle, var(--b), transparent 65%); opacity: .2; filter: blur(40px); animation-delay: -4s; }
-@keyframes float { to { transform: translate(30px, -42px) scale(1.08); } }
 
 /* about + video */
 .about-top{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end}
 .about-top p{color:var(--mute);max-width:36rem}
-.vid{position:relative;margin-top:4rem;}
+.vid{position:relative;margin-top:4rem;animation: float 6s ease-in-out infinite;}
 .frame{position:relative;padding:12px;border-radius:calc(var(--r) + 12px);border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(20px);box-shadow:0 40px 120px -30px rgba(124,92,255,.4);transition:transform .4s}
 .frame:hover{transform:scale(1.02);}
 .frame iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:var(--r);background:#000}
@@ -84,6 +90,13 @@ section{padding:clamp(4.5rem,11vw,8rem) 0;position:relative}
 .links a{border-bottom:1px solid var(--line);transition:color .25s,border-color .25s}
 .links a:hover{color:var(--ink);border-color:var(--b)}
 footer{padding:2rem 0 3rem;text-align:center;color:var(--mute);font-size:.9rem}
+
+/* Native Scroll Reveals */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
 
 @media(max-width:800px){.about-top{grid-template-columns:1fr;gap:1.5rem}}
 @media(max-width:600px){.bar{gap:1.2rem;padding-right:.65rem}.bar nav{display:none}}
@@ -129,18 +142,18 @@ footer{padding:2rem 0 3rem;text-align:center;color:var(--mute);font-size:.9rem}
     <h2 class="reveal">Selected work</h2>
     <h3 class="sub reveal">Posters &amp; Branding</h3>
     <div class="masonry">
-      <article class="reveal delay-1"><div class="card"><img src="https://nathansathan.github.io/Poster-ad.jpg" alt="Yugo Sushi poster"><div class="cap"><b>Yugo Sushi</b><span>Commercial print</span></div></div></article>
-      <article class="reveal delay-2"><div class="card"><img src="https://raw.githubusercontent.com/Nathansathan/nathansathan.github.io/main/BlindBoxAlley.JPG" alt="Blind Box Alley">
-      <article class="reveal delay-3"><div class="card"><img src="https://nathansathan.github.io/Bannder-ad.jpg" alt="Depravity Apparel"><div class="cap"><b>Depravity Apparel</b><span>Social promo</span></div></div></article>
-      <article class="reveal"><div class="card"><img src="https://nathansathan.github.io/2HORIZONTAL%20LOGO.jpg" alt="Nathan’s Night branding"><div class="cap"><b>Nathan’s Night</b><span>Brand identity</span></div></div></article>
+      <article class="reveal delay-1"><div class="card"><img src="Poster-ad.jpg?v=2" alt="Yugo Sushi poster"><div class="cap"><b>Yugo Sushi</b><span>Commercial print</span></div></div></article>
+      <article class="reveal delay-2"><div class="card"><img src="BlindBoxAlley.jpg?v=2" alt="Blind Box Alley"><div class="cap"><b>Blind Box Alley</b><span>Typography</span></div></div></article>
+      <article class="reveal delay-3"><div class="card"><img src="Bannder-ad.jpg?v=2" alt="Depravity Apparel"><div class="cap"><b>Depravity Apparel</b><span>Social promo</span></div></div></article>
+      <article class="reveal"><div class="card"><img src="2HORIZONTAL%20LOGO.jpg?v=2" alt="Nathan’s Night branding"><div class="cap"><b>Nathan’s Night</b><span>Brand identity</span></div></div></article>
     </div>
 
     <h3 class="sub reveal">Restless Magazine Editorial</h3>
     <div class="masonry two">
-      <article class="reveal delay-1"><div class="card"><img src="https://nathansathan.github.io/1stPageMagazine.jpg" alt="Magazine cover"><div class="cap"><b>Cover Layout</b><span>Feature story</span></div></div></article>
-      <article class="reveal delay-2"><div class="card"><img src="https://nathansathan.github.io/2ndPageMagazine.jpg" alt="About Me spread"><div class="cap"><b>About Me</b><span>Editorial spread</span></div></div></article>
-      <article class="reveal delay-1"><div class="card"><img src="https://nathansathan.github.io/3rdPageMagazine.jpg" alt="Achievements spread"><div class="cap"><b>Achievements</b><span>Editorial spread</span></div></div></article>
-      <article class="reveal delay-2"><div class="card"><img src="https://nathansathan.github.io/4thPageMagazine.jpg" alt="Interests spread"><div class="cap"><b>Interests</b><span>Editorial spread</span></div></div></article>
+      <article class="reveal delay-1"><div class="card"><img src="1stPageMagazine.jpg?v=2" alt="Magazine cover"><div class="cap"><b>Cover Layout</b><span>Feature story</span></div></div></article>
+      <article class="reveal delay-2"><div class="card"><img src="2ndPageMagazine.jpg?v=2" alt="About Me spread"><div class="cap"><b>About Me</b><span>Editorial spread</span></div></div></article>
+      <article class="reveal delay-1"><div class="card"><img src="3rdPageMagazine.jpg?v=2" alt="Achievements spread"><div class="cap"><b>Achievements</b><span>Editorial spread</span></div></div></article>
+      <article class="reveal delay-2"><div class="card"><img src="4thPageMagazine.jpg?v=2" alt="Interests spread"><div class="cap"><b>Interests</b><span>Editorial spread</span></div></div></article>
     </div>
   </div>
 </section>
@@ -164,7 +177,7 @@ footer{padding:2rem 0 3rem;text-align:center;color:var(--mute);font-size:.9rem}
 <audio id="bgMusic" loop>
   <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
 </audio>
-<button id="musicToggle" class="btn p sm" style="position: fixed; bottom: 20px; right: 20px; z-index: 100;">Play Music</button>
+<button id="musicToggle" class="btn p sm reveal" style="position: fixed; bottom: 20px; right: 20px; z-index: 100;">Play Music</button>
 
 <script>
   // 1. Unblockable Native Scroll Reveal
