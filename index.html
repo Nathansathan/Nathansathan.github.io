@@ -3,306 +3,439 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nathaniel Estabaya | Portfolio</title>
+    <title>Nathaniel Estabaya | Creative Portfolio</title>
     <!-- AOS Animation Library CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* Moodboard Colors & Fonts */
+        /* Modernized Color Palette & Typography */
         :root {
-            --yellow: #FFDE42;
-            --olive-light: #4C5C2D;
-            --olive-dark: #313E17;
-            --black-bg: #1B0C0C;
-            --text-light: #F4F4F4;
+            --primary-accent: #FFDE42;
+            --bg-dark: #0a0a0a;
+            --surface-dark: #1a1a1a;
+            --surface-light: #2a2a2a;
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            font-family: "Yu Gothic UI", sans-serif;
-            background-color: var(--black-bg);
-            color: var(--text-light);
-            line-height: 1.6;
+            font-family: 'Yu Gothic UI', -apple-system, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        /* Navigation */
+        /* Glassmorphism Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(27, 12, 12, 0.9);
-            padding: 15px 0;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 20px 0;
             text-align: center;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-        nav a {
-            color: var(--yellow);
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: var(--text-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Layout & Sections */
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary-accent);
+        }
+
+        /* Section Layouts */
         section {
-            padding: 100px 20px 60px;
-            max-width: 1000px;
+            padding: 120px 5% 80px;
+            max-width: 1200px;
             margin: 0 auto;
         }
-        
-        h1, h2, h3 {
-            color: var(--yellow);
-        }
-        h2 {
-            border-bottom: 2px solid var(--olive-dark);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+
+        .section-header {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            background: linear-gradient(90deg, #fff, var(--primary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         /* Hero Section */
         #home {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-        }
-        #home h1 {
-            font-size: 4rem;
-            margin: 0;
-            text-transform: uppercase;
-        }
-        #home p {
-            font-size: 1.2rem;
-            color: var(--olive-light);
-            max-width: 600px;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
         }
 
-        /* About Section & Promo Ad */
-        .about-container {
-            display: flex;
-            gap: 40px;
+        #home h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        #home h1 span {
+            color: var(--primary-accent);
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             align-items: center;
-            flex-wrap: wrap;
         }
-        .about-text {
-            flex: 1;
-            min-width: 300px;
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
         }
-        .promo-ad {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transition: var(--transition);
         }
-        .promo-ad img {
-            max-width: 100%;
-            border: 4px solid var(--olive-dark);
-            border-radius: 8px;
-            transition: transform 0.4s ease;
-        }
-        .promo-ad img:hover {
-            transform: scale(1.05);
+
+        .about-image img:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(255, 222, 66, 0.1);
         }
 
         /* Skills Section */
-        .skills-grid {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .skill-card {
-            background: var(--olive-dark);
-            padding: 20px;
-            border-radius: 8px;
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-            border-bottom: 4px solid var(--olive-light);
-            transition: transform 0.3s, background 0.3s;
-        }
-        .skill-card:hover {
-            transform: translateY(-10px);
-            background: var(--olive-light);
-        }
-        .skill-card ul {
-            list-style: none;
-            padding: 0;
-            color: var(--yellow);
-            font-weight: bold;
-        }
-        .skill-card li { margin: 10px 0; }
-
-        /* Portfolio Section */
-        .portfolio-grid {
+        .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .portfolio-item {
-            background: var(--olive-dark);
-            border-radius: 8px;
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        .portfolio-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-        .portfolio-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        .portfolio-item h3 {
-            margin: 15px 0 5px;
-        }
-        .portfolio-item p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            padding: 0 15px 15px;
-            margin: 0;
+            gap: 30px;
         }
 
-        /* Contacts Section */
-        #contacts {
+        .skill-box {
+            background: var(--surface-dark);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px 30px;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .skill-box:hover {
+            transform: translateY(-5px);
+            background: var(--surface-light);
+            border-color: var(--primary-accent);
+        }
+
+        .skill-box h3 {
+            color: var(--primary-accent);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .skill-box ul {
+            list-style: none;
+        }
+
+        .skill-box li {
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-box li::before {
+            content: '▹';
+            color: var(--primary-accent);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Advanced Portfolio Grid */
+        .portfolio-masonry {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-card {
+            background: var(--surface-dark);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            border-color: rgba(255, 222, 66, 0.3);
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .portfolio-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .card-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer & Contact */
+        footer {
             text-align: center;
-            background: var(--olive-dark);
-            padding: 60px 20px;
-            margin-top: 50px;
-            border-top: 5px solid var(--yellow);
+            padding: 80px 20px;
+            background: var(--surface-dark);
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
-        .contact-btn {
+
+        footer h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
             display: inline-block;
-            background: var(--yellow);
-            color: var(--black-bg);
-            padding: 12px 30px;
-            text-decoration: none;
+            background: var(--primary-accent);
+            color: var(--bg-dark);
+            padding: 15px 40px;
             font-weight: bold;
+            text-decoration: none;
             border-radius: 30px;
-            margin-top: 20px;
-            transition: background 0.3s;
+            margin-top: 30px;
+            transition: var(--transition);
         }
-        .contact-btn:hover {
-            background: var(--text-light);
+
+        .btn:hover {
+            background: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 222, 66, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                padding: 15px 0;
+            }
+            nav a {
+                margin: 0 10px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Sticky Glass Navbar -->
     <nav data-aos="fade-down" data-aos-duration="1000">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contacts">Contacts</a>
+        <a href="#portfolio">Work</a>
+        <a href="#contact">Contact</a>
     </nav>
 
-    <!-- HOME SECTION -->
+    <!-- Hero Section -->
     <section id="home">
-        <h1 data-aos="zoom-in">Nathaniel Estabaya</h1>
-        <p data-aos="fade-up" data-aos-delay="200">Computer Science Student & Graphic Designer. Choosing happiness, valuing freedom, and building reliable systems.</p>
+        <h1 data-aos="zoom-in" data-aos-duration="1000">Nathaniel <span>Estabaya</span></h1>
+        <p data-aos="fade-up" data-aos-delay="200">Computer Science Student & Graphic Designer. Building reliable systems and visually striking brand identities.</p>
+        <a href="#portfolio" class="btn" data-aos="fade-up" data-aos-delay="400">View My Work</a>
     </section>
 
-    <!-- ABOUT SECTION -->
+    <!-- About Section -->
     <section id="about">
-        <h2 data-aos="fade-right">About Me</h2>
-        <div class="about-container">
-            <div class="about-text" data-aos="fade-up">
-                <p>I am a Computer Science student known for being humorous, optimistic, and analytical. I balance my logical side with creativity, aiming to become a successful System Quality Assurance professional.</p>
-                <p>My philosophy in life is simple: choose to be happy. Success isn't just about having a good career; it is about building a "simple rich life" with freedom, great experiences, and doing the things that make life meaningful.</p>
+        <h2 class="section-header" data-aos="fade-up">Who is Nathan?</h2>
+        <div class="about-grid">
+            <div class="about-text" data-aos="fade-right">
+                <p>I am a Computer Science student who balances analytical thinking with creative design. Behind my optimistic and humorous personality is a dedicated System Quality Assurance professional in training.</p>
+                <p>My philosophy is simple: choose to be happy and value freedom. I aim to build a career where logic meets creativity, leading to a "simple rich life" full of great experiences and meaningful work.</p>
             </div>
-            <!-- PROMO AD AS REQUIRED BY RUBRIC -->
-            <div class="promo-ad" data-aos="fade-left">
-                <p style="color: var(--yellow); font-size: 0.9rem;">Featured Promotional Ad</p>
-                <!-- Reference to your provided Banner Ad image -->
-                <img src="Bannder-ad.jpg" alt="Depravity T-Shirt Promo Buy 1 Get 1">
+            <!-- Incorporating the Magazine Cover as the About Image -->
+            <div class="about-image" data-aos="fade-left">
+                <img src="1stPageMagazine.jpg" alt="Nathaniel Estabaya Magazine Feature">
             </div>
         </div>
     </section>
 
-    <!-- SKILLS SECTION -->
+    <!-- Skills Section -->
     <section id="skills">
-        <h2 data-aos="fade-right">Skills & Proficiencies</h2>
-        <div class="skills-grid">
-            <div class="skill-card" data-aos="flip-left" data-aos-delay="100">
-                <h3>Programming</h3>
+        <h2 class="section-header" data-aos="fade-up">Technical Arsenal</h2>
+        <div class="skills-container">
+            <div class="skill-box" data-aos="fade-up" data-aos-delay="100">
+                <h3>Software Engineering</h3>
                 <ul>
-                    <li>Python</li>
-                    <li>Dart</li>
-                    <li>C</li>
-                    <li>Assembly Language</li>
+                    <li>Python & Data Structures</li>
+                    <li>Dart & Flutter</li>
+                    <li>C Programming</li>
+                    <li>x86 Assembly Language</li>
                 </ul>
             </div>
-            <div class="skill-card" data-aos="flip-left" data-aos-delay="200">
-                <h3>Graphics & Media</h3>
+            <div class="skill-box" data-aos="fade-up" data-aos-delay="200">
+                <h3>Design & Media</h3>
                 <ul>
-                    <li>Print Media Design</li>
-                    <li>Brand Identity</li>
-                    <li>Typography</li>
-                    <li>Visual Layouts</li>
+                    <li>Print Media & Typography</li>
+                    <li>Brand Identity Creation</li>
+                    <li>Commercial Layouts</li>
+                    <li>Photo Manipulation</li>
                 </ul>
             </div>
-            <div class="skill-card" data-aos="flip-left" data-aos-delay="300">
-                <h3>Core Competencies</h3>
+            <div class="skill-box" data-aos="fade-up" data-aos-delay="300">
+                <h3>Core Methodologies</h3>
                 <ul>
                     <li>System Quality Assurance</li>
-                    <li>Strategic Thinking</li>
-                    <li>Collaboration</li>
+                    <li>Strategic Problem Solving</li>
+                    <li>Project Collaboration</li>
+                    <li>UI/UX Prototyping</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- PORTFOLIO SECTION -->
+    <!-- Portfolio Section -->
     <section id="portfolio">
-        <h2 data-aos="fade-right">Creative Outputs & Portfolio</h2>
-        <div class="portfolio-grid">
-            <!-- Project 1 -->
-            <div class="portfolio-item" data-aos="zoom-in-up" data-aos-delay="100">
-                <img src="2HORIZONTAL LOGO.jpg" alt="Nathan's Night Branding">
-                <h3>Nathan's Night Branding</h3>
-                <p>Logo and moodboard development using Yu Gothic UI and signature golden hour color grading.</p>
+        <h2 class="section-header" data-aos="fade-up">Selected Works</h2>
+        <div class="portfolio-masonry">
+            
+            <!-- Item 1: Yugo Sushi Poster -->
+            <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="card-img-wrapper">
+                    <img src="Poster-ad.jpg" alt="Yugo Sushi Promotional Poster">
+                </div>
+                <div class="card-content">
+                    <h3>Yugo Sushi: Commercial Print</h3>
+                    <p>Dynamic product photography layout with clear ingredient callouts and price badging designed for physical storefront conversion.</p>
+                </div>
             </div>
-            <!-- Project 2 -->
-            <div class="portfolio-item" data-aos="zoom-in-up" data-aos-delay="200">
-                <img src="BlindBoxAlley.jpg" alt="The Blind Box Alley">
-                <h3>The Blind Box Alley</h3>
-                <p>Typography and promotional poster design for premium designer toys and daily reveals.</p>
+
+            <!-- Item 2: Blind Box Alley -->
+            <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card-img-wrapper">
+                    <img src="BlindBoxAlley.jpg" alt="The Blind Box Alley Typography">
+                </div>
+                <div class="card-content">
+                    <h3>The Blind Box Alley</h3>
+                    <p>Playful typography and promotional poster design targeting the premium designer toy and daily reveal market.</p>
+                </div>
             </div>
-            <!-- Project 3 -->
-            <div class="portfolio-item" data-aos="zoom-in-up" data-aos-delay="300">
-                <!-- Using Banner Ad again to fill grid, or replace with Yugo Sushi JPG if you export it -->
-                <img src="Bannder-ad.jpg" alt="Apparel Promo Design">
-                <h3>Depravity Apparel Promo</h3>
-                <p>Social media promotional layout for streetwear Buy 1 Get 1 campaign.</p>
+
+            <!-- Item 3: Depravity Apparel Promo -->
+            <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="card-img-wrapper">
+                    <img src="Bannder-ad_2.jpg" alt="Depravity Apparel Promo">
+                </div>
+                <div class="card-content">
+                    <h3>Depravity Streetwear Promo</h3>
+                    <p>High-contrast social media promotional layout featuring a Buy 1 Get 1 campaign for modern urban apparel.</p>
+                </div>
             </div>
+
+            <!-- Item 4: Nathan's Night Branding -->
+            <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="card-img-wrapper">
+                    <img src="2HORIZONTAL LOGO_2.jpg" alt="Nathan's Night Branding">
+                </div>
+                <div class="card-content">
+                    <h3>Nathan's Night Identity</h3>
+                    <p>Logo design and brand identity development capturing a signature "golden hour" aesthetic utilizing Yu Gothic UI.</p>
+                </div>
+            </div>
+
+            <!-- Item 5: Restless Magazine Editorial (Pages 2-3) -->
+            <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card-img-wrapper">
+                    <img src="3rdPageMagazine.jpg" alt="Restless Magazine Achievements">
+                </div>
+                <div class="card-content">
+                    <h3>Restless Magazine Editorial</h3>
+                    <p>Custom multi-page magazine spread detailing academic achievements, personal goals, and creative interests in a striking grunge aesthetic.</p>
+                </div>
+            </div>
+
+            <!-- Item 6: My Interests / Magazine Page 4 -->
+            <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="card-img-wrapper">
+                    <img src="4thPageMagazine.jpg" alt="Restless Magazine Interests">
+                </div>
+                <div class="card-content">
+                    <h3>Editorial Layout: Interests</h3>
+                    <p>Graphic layout blending photography and digital illustration to showcase personal hobbies, strategic games, and musical influences.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- CONTACTS SECTION -->
-    <section id="contacts" data-aos="fade-up">
-        <h2>Let's Connect</h2>
-        <p>Interested in collaborating on software projects or graphic design?</p>
-        <p style="font-size: 1.2rem; color: var(--yellow);">Neestabaya@ccc.edu.ph | 0927-877-3945</p>
-        <a href="mailto:Neestabaya@ccc.edu.ph" class="contact-btn">Send an Email</a>
-    </section>
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <h2 data-aos="fade-up">Let's Build Something.</h2>
+        <p data-aos="fade-up" data-aos-delay="100" style="color: var(--text-muted); margin-bottom: 20px;">Available for software QA, development, and commercial graphic design.</p>
+        <p data-aos="fade-up" data-aos-delay="200" style="font-size: 1.2rem; color: #fff;">Neestabaya@ccc.edu.ph | 0927-877-3945</p>
+        <a href="mailto:Neestabaya@ccc.edu.ph" class="btn" data-aos="fade-up" data-aos-delay="300">Get In Touch</a>
+    </footer>
 
     <!-- AOS Animation Library JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize Scroll Animations
         AOS.init({
-            once: false, // Animations trigger every time you scroll up and down
-            offset: 100, // Offset from original trigger point
-            duration: 800, // Animation duration
-            easing: 'ease-in-out'
+            once: true, // Only animate once when scrolling down
+            offset: 80,
+            duration: 800,
+            easing: 'ease-out-cubic'
         });
     </script>
 </body>
